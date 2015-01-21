@@ -36,6 +36,7 @@ public class Order {
     public Order(String customerId, String customerName) {
         this.customerId = customerId;
         this.customerName = customerName;
+        
     }
     
     public void addPurchase(Purchase p) {

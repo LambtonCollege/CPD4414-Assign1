@@ -62,4 +62,10 @@ public class OrderQueueTest {
         assertTrue(Math.abs(result - expResult) < 1000);
     }
     
+    @Test
+    public void testNoOrdersThenReturnNull(){
+        OrderQueue orderQueue = new OrderQueue();
+        
+        
+    }
 }
