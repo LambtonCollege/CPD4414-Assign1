@@ -73,8 +73,6 @@ public class OrderQueueTest {
         order2.addPurchase(new Purchase("PROD0006", 250));
         orderQueue.add(order1);
         orderQueue.add(order2);
-        order1.setTimeReceived(new Date());
-        order2.setTimeReceived(new Date());
         boolean earliestTimeReceived = false;
         //System.out.println(order1.getTimeFulfilled().getTime());
         long result1 = order1.getTimeReceived().getTime();
