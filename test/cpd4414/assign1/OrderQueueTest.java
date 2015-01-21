@@ -91,4 +91,14 @@ public class OrderQueueTest {
         assertTrue(didThrow);
     }
 
+    public void GivenaRequestForaReportWhenThereAreNoOrdersInTheSystemThenReturnAnEmptyString()
+    {
+         OrderQueue orderQueue = new OrderQueue();
+         Order order = new Order("CUST00001", "ABC Construction");
+         
+         
+        
+    }
+
+    
 }
