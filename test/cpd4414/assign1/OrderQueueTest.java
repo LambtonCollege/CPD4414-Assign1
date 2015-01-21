@@ -74,10 +74,11 @@ public class OrderQueueTest {
             orderQueue.add(order);
         } catch (NoCustomerException ex) {
             didThrow = true;
-        } catch (Exception ex) {}
+        } catch (Exception ex) {
+        }
         assertTrue(didThrow);
     }
-    
+
     @Test
     public void testNewOrderWhenNoListOfPurchasesThenThrowException() {
         boolean didThrow = false;
@@ -87,8 +88,20 @@ public class OrderQueueTest {
             orderQueue.add(order);
         } catch (NoPurchaseListException ex) {
             didThrow = true;
-        } catch (Exception ex) { }
+        } catch (Exception ex) {
+        }
         assertTrue(didThrow);
     }
 
+    @Test
+    public void testGivenRequestForTheNextOrderWhenThereAreOrdersInTheSystemThen() throws Exception {
+        OrderQueue orderQueue = new OrderQueue();
+        Order order = new Order("", "");
+        orderQueue.add(order);
+
+        long expResult = new Date().getTime();
+        long result = order.getTimeReceived().getTime();
+        assertTrue(Math.abs(result - expResult) < 1000);
+
+    }
 }
