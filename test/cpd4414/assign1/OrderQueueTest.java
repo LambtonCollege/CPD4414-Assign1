@@ -90,5 +90,18 @@ public class OrderQueueTest {
         } catch (Exception ex) { }
         assertTrue(didThrow);
     }
-
+    
+    @Test
+    public void testNewOrderwhenTheOrderDoesNotHaveATimeReceivedThenThrowException() {
+        
+        boolean didThrow = false;
+        OrderQueue orderQueue = new OrderQueue();
+        Order order = new Order("CUST00001", "ABC Construction");
+        try {
+            orderQueue.add(order);
+        } catch (NoPurchaseListException ex) {
+            didThrow = true;
+        } catch (Exception ex) { }
+        assertTrue(didThrow);
+    }
 }
