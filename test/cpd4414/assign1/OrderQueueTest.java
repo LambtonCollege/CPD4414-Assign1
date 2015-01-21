@@ -66,13 +66,14 @@ public class OrderQueueTest {
     public void testWhenNextOrderAndOrdersExistThenGetOrderWithNoTimeProcessed() {
         OrderQueue orderQueue = new OrderQueue();
         Order order1 = new Order("CUST00001", "ABC Construction");
-        order1.addPurchase(new Purchase("PROD0004", 450));
-        order1.addPurchase(new Purchase("PROD0006", 250));
+        order1.addPurchase(new Purchase("PROD0001", 450));
+        order1.addPurchase(new Purchase("PROD0007", 250));
         Order order2 = new Order("CUST00002", "DCB Construction");
-        order2.addPurchase(new Purchase("PROD0004", 450));
-        order2.addPurchase(new Purchase("PROD0006", 250));
+        order2.addPurchase(new Purchase("PROD0004", 150));
+        order2.addPurchase(new Purchase("PROD0006", 850));
         orderQueue.add(order1);
         orderQueue.add(order2);
+        
         boolean earliestTimeReceived = false;
         //System.out.println(order1.getTimeFulfilled().getTime());
         long result1 = order1.getTimeReceived().getTime();
