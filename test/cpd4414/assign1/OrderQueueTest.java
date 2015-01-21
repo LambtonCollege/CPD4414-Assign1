@@ -62,4 +62,23 @@ public class OrderQueueTest {
         assertTrue(Math.abs(result - expResult) < 1000);
     }
     
+    @Test
+    public void testWhenNextOrderAndOrdersExistThenGetOrderWithNoTimeProcessed() {
+        OrderQueue orderQueue = new OrderQueue();
+        Order order1 = new Order("CUST00001", "ABC Construction");
+        order1.addPurchase(new Purchase("PROD0004", 450));
+        order1.addPurchase(new Purchase("PROD0006", 250));
+        Order order2 = new Order("CUST00002", "DCB Construction");
+        order2.addPurchase(new Purchase("PROD0004", 450));
+        order2.addPurchase(new Purchase("PROD0006", 250));
+        orderQueue.add(order1);
+        orderQueue.add(order2);
+        
+        
+        
+        long expResult = new Date().getTime();
+        long result = order1.getTimeReceived().getTime();
+        assertTrue(Math.abs(result - expResult) < 1000);
+    }
+    
 }
