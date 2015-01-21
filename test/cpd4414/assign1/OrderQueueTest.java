@@ -65,7 +65,8 @@ public class OrderQueueTest {
     public void testRequestNewOrderWhenNoOrderReturnNull() {
        
         OrderQueue orderQueue = new OrderQueue();
-        Order order = new Order("CUST00001", "ABC Construction");
+        Order order = new Order("CUST01", "XYZ Construction");
+        orderQueue.add(order);
         String expResult = null;
         
     }
