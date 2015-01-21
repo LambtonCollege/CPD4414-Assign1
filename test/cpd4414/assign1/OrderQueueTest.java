@@ -62,4 +62,23 @@ public class OrderQueueTest {
         assertTrue(Math.abs(result - expResult) < 1000);
     }
     
+    @Test
+    public void testRequestToFulfilOrderWhenOrderHaveTimeProcessThrowException(){
+        boolean tryThrow = false;
+        OrderQueue orderQueue = new OrderQueue();
+        Order order = new Order("CUST00001", "ABC Construction");
+        orderQueue.add(order);  
+        long expResult = new Date().getTime();
+        long result = order.getTimeReceived().getTime();
+        assertTrue(Math.abs(result - expResult) < 1000);
+    }
+     //   try {
+      //      orderQueue.add(order);
+      //  }
+      //  catch (Exception ex){
+      //          tryThrow =true;
+       // }
+      //  assertTrue(tryThrow);
+   // }
+    
 }
