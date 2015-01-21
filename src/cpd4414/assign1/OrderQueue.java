@@ -36,6 +36,12 @@ public class OrderQueue {
         order.setTimeReceived(new Date());
     }
     
+    public Date nextRequestedOrder(Order orders){
+        if(orders.getTimeReceived()!=null){
+            return null;
+        }
+        return orders.getTimeReceived();
+    }
     public class NoCustomerException extends RuntimeException {}
     public class NoPurchaseListException extends RuntimeException {}
 }
