@@ -17,6 +17,8 @@
 package cpd4414.assign1;
 
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
@@ -61,5 +63,22 @@ public class OrderQueueTest {
         long result = order.getTimeReceived().getTime();
         assertTrue(Math.abs(result - expResult) < 1000);
     }
-    
+    @Test
+    public void testWhenRequestNextOrderAndOrdersInTheSystemExitsReturnOrderTimeProcessed(){
+        OrderQueue orderQueue = new OrderQueue();
+        Order order = new Order("CUST00001", "ABC Construction");
+        order.addPurchase(new Purchase("PROD0004", 450));
+        order.addPurchase(new Purchase("PROD0006", 250));
+        try {
+            orderQueue.wait();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(OrderQueueTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+      
+        
+        
+        
+    }
 }
