@@ -17,6 +17,8 @@
 package cpd4414.assign1;
 
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
@@ -55,11 +57,41 @@ public class OrderQueueTest {
         Order order = new Order("CUST00001", "ABC Construction");
         order.addPurchase(new Purchase("PROD0004", 450));
         order.addPurchase(new Purchase("PROD0006", 250));
-        orderQueue.add(order);
+        try {
+            orderQueue.add(order);
+        } catch (Exception ex) {
+            System.out.println("Exception occured: " +ex.getMessage());
+        }
         
         long expResult = new Date().getTime();
         long result = order.getTimeReceived().getTime();
         assertTrue(Math.abs(result - expResult) < 1000);
+        
     }
+    
+    @Test
+    public void testWhenNewOrderArrivesWhenNoListOfPurchasesThenThrowException() {
+        boolean check = false;
+        OrderQueue orderQueue = new OrderQueue();
+        Order order = new Order("CUST00001", "ABC Construction");
+        try{
+            orderQueue.add(order);
+        }
+        catch(Exception ex){
+            check = true;
+        }
+        
+        assertTrue(check);
+    }
+    
+    @Test
+    public void testWhenNoOrdersThenReturnNull() {
+        OrderQueue orderQueue = new OrderQueue();
+        Order order = new Order();
+        order = orderQueue.next();
+        assertTrue(order.equals(null));
+        
+    }
+    
     
 }
