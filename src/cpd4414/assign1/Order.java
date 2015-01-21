@@ -66,7 +66,10 @@ public class Order {
         this.timeReceived = timeReceived;
     }
 
-    public Date getTimeProcessed() {
+    public Date getTimeProcessed() throws Exception{
+        
+        if (timeProcessed == null) throw new Exception("The Processed Time has not set");
+        
         return timeProcessed;
     }
 
