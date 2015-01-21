@@ -15,6 +15,8 @@
  */
 package cpd4414.assign1;
 
+import cpd4414.assign1.OrderQueue.NoCustomerException;
+import cpd4414.assign1.OrderQueue.NoPurchaseListException;
 import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -70,9 +72,22 @@ public class OrderQueueTest {
         order.addPurchase(new Purchase("PROD0006", 250));
         try {
             orderQueue.add(order);
-        } catch (Exception ex) {
+        } catch (NoCustomerException ex) {
             didThrow = true;
-        }
+        } catch (Exception ex) {}
+        assertTrue(didThrow);
+    }
+    
+    @Test
+    public void testNewOrderWhenNoListOfPurchasesThenThrowException() {
+        boolean didThrow = false;
+        OrderQueue orderQueue = new OrderQueue();
+        Order order = new Order("CUST00001", "ABC Construction");
+        try {
+            orderQueue.add(order);
+        } catch (NoPurchaseListException ex) {
+            didThrow = true;
+        } catch (Exception ex) { }
         assertTrue(didThrow);
     }
 

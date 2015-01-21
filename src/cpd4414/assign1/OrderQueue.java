@@ -29,8 +29,11 @@ public class OrderQueue {
     
     public void add(Order order) throws Exception {
         if (order.getCustomerId().isEmpty() && order.getCustomerName().isEmpty())
-            throw new Exception ("No Customer Name or ID");
+            throw new NoCustomerException();
         orderQueue.add(order);
         order.setTimeReceived(new Date());
     }
+    
+    public class NoCustomerException extends RuntimeException {}
+    public class NoPurchaseListException extends RuntimeException {}
 }
