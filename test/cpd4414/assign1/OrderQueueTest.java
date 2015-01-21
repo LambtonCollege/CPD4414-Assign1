@@ -91,6 +91,7 @@ public class OrderQueueTest {
         assertTrue(didThrow);
     }
 
+    @Test
     public void GivenaRequestForaReportWhenThereAreNoOrdersInTheSystemThenReturnAnEmptyString()
     {
          OrderQueue orderQueue = new OrderQueue();
