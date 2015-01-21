@@ -33,7 +33,12 @@ public class OrderQueue {
     }
     
   
-    public boolean checkingOrders(){
-        return orderQueue.isEmpty();      
+    public String checkingOrders(){
+        if (orderQueue.isEmpty()){
+         return null;
+        }  
+        else{
+        return "Not Empty";
+        }  
     }    
 }

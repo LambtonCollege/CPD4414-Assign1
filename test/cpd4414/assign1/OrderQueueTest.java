@@ -66,10 +66,10 @@ public class OrderQueueTest {
     public void testRequestForNextOrderWhenThereAreNoOrdersInTheSystemThenReturnNull(){
        OrderQueue orederQTest = new OrderQueue();
        Order order = new Order("c0650853", "Pavlo Gudzenko");
-        boolean expResult = true;
-        boolean result = orederQTest.checkingOrders();
+        String expResult = null;
+        String result = orederQTest.checkingOrders();
         
-         assertTrue(expResult == result);
+         assertEquals(expResult, result);
        
     }
 }
