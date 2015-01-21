@@ -27,8 +27,13 @@ import java.util.Queue;
 public class OrderQueue {
     Queue<Order> orderQueue = new ArrayDeque<>();
     
-    public void add(Order order) {
+    public void add(Order order) throws Exception {
+        if(order.getTimeProcessed()==null){
+            throw new NoTimeProcessedException();
+            
+        }
         orderQueue.add(order);
         order.setTimeReceived(new Date());
     }
+    public class NoTimeProcessedException extends RuntimeException{}
 }
