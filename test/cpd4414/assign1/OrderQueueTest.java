@@ -60,6 +60,16 @@ public class OrderQueueTest {
         long expResult = new Date().getTime();
         long result = order.getTimeReceived().getTime();
         assertTrue(Math.abs(result - expResult) < 1000);
+           
     }
-    
+    public void testWhenProcessAnOrderTimeReceivedThenTimeProcessedNow(){
+        OrderQueue orderQueue = new OrderQueue();
+        Order order = new Order("CUST00001", "ABC Construction");
+        order.addPurchase(new Purchase("PROD0004", 450));
+        orderQueue.process(order);
+        
+        long expResult = new Date().getTime();
+        long result = order.getTimeProcessed().getTime();
+        assertTrue(Math.abs(result - expResult) < 1000);
+    }
 }

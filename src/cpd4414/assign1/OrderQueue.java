@@ -31,4 +31,9 @@ public class OrderQueue {
         orderQueue.add(order);
         order.setTimeReceived(new Date());
     }
+    
+     public void process(Order order) {
+        orderQueue.add(order);
+        order.setTimeProcessed(new Date());
+    }
 }
