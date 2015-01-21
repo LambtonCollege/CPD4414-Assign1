@@ -62,4 +62,15 @@ public class OrderQueueTest {
         assertTrue(Math.abs(result - expResult) < 1000);
     }
     
+    @Test
+    public void GivenaRequestForaReportWhenThereAreNoOrdersInTheSystemThenReturnAnEmptyString()
+    {
+         OrderQueue orderQueue = new OrderQueue();
+         Order order = new Order("CUST00001", "ABC Construction");
+         
+         
+        
+    }
+
+    
 }
