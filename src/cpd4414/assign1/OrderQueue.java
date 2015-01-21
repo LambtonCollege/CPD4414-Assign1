@@ -31,4 +31,8 @@ public class OrderQueue {
         orderQueue.add(order);
         order.setTimeReceived(new Date());
     }
+    
+    public void checkout(Order order) {
+        orderQueue.remove(order);
+    }
 }
