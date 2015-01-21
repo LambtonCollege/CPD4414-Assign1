@@ -30,6 +30,8 @@ public class OrderQueue {
     public void add(Order order) throws Exception {
         if (order.getCustomerId().isEmpty() && order.getCustomerName().isEmpty())
             throw new NoCustomerException();
+        if (order.getListOfPurchases().isEmpty())
+            throw new NoPurchaseListException();
         orderQueue.add(order);
         order.setTimeReceived(new Date());
     }
