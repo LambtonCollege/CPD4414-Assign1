@@ -104,7 +104,7 @@ public class OrderQueueTest {
     
     
     @Test
-    public void testfullfillanorderwithouttimeprocessedThenThrowException() {
+    public void testfullfillanorderwithouttimeprocessedThenThrowException() throws Exception {
         OrderQueue orderQueue = new OrderQueue();
         Order order = new Order("CUST00001", "ABC Construction");
         order.addPurchase(new Purchase("PROD0004", 450));
