@@ -86,7 +86,6 @@ public class OrderQueueTest {
             order2.getListOfPurchases();
             earliestTimeReceived = true;
         }
-        
         assertTrue(earliestTimeReceived);
     }
     
