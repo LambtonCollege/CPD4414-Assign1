@@ -62,4 +62,18 @@ public class OrderQueueTest {
         assertTrue(Math.abs(result - expResult) < 1000);
     }
     
+     @Test
+    public void testRequestForNextOrderWhenThereAreNoOrdersInTheSystemThenReturnNull(){
+       OrderQueue orederQTest = new OrderQueue();
+       Order order = new Order("c0650853", "Pavlo Gudzenko");
+        boolean expResult = true;
+        boolean result = orederQTest.checkingOrders();
+        
+         assertTrue(expResult == result);
+       
+    }
 }
+    
+    
+    
+    

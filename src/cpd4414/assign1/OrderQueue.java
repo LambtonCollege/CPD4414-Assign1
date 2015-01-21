@@ -31,4 +31,9 @@ public class OrderQueue {
         orderQueue.add(order);
         order.setTimeReceived(new Date());
     }
+    
+  
+    public boolean checkingOrders(){
+        return orderQueue.isEmpty();      
+    }    
 }
