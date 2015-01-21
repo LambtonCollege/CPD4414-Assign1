@@ -62,4 +62,22 @@ public class OrderQueueTest {
         assertTrue(Math.abs(result - expResult) < 1000);
     }
     
+    @Test
+    public void testWhenGivenRequestForNextOrderAndNoOrdersExist() {
+        boolean bothNull = false;
+        
+        OrderQueue orderQueue = new OrderQueue();
+        orderQueue.getNext();
+        
+        Order expResult = null;
+        Order result = orderQueue.getNext();
+        
+        if(result == null)
+        {
+            bothNull = true;
+        }
+        
+        assertTrue(bothNull);
+    }
+    
 }
