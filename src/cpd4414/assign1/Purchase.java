@@ -28,6 +28,11 @@ public class Purchase {
         this.productId = productId;
         this.quantity = quantity;
     }
+
+    public Purchase() {
+        
+    }
+    
     
     public String getProductId() {
         return productId;

@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package cpd4414.assign1;
 
 import java.util.Date;
@@ -29,41 +28,63 @@ import org.junit.Test;
  * @author Len Payne <len.payne@lambtoncollege.ca>
  */
 public class OrderQueueTest {
-    
+
     public OrderQueueTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     @Test
-    public void testWhenCustomerExistsAndPurchasesExistThenTimeReceivedIsNow() {
+    public void testWhenCustomerExistsAndPurchasesExistThenTimeReceivedIsNow() throws CustomerException {
         OrderQueue orderQueue = new OrderQueue();
         Order order = new Order("CUST00001", "ABC Construction");
         order.addPurchase(new Purchase("PROD0004", 450));
         order.addPurchase(new Purchase("PROD0006", 250));
         orderQueue.add(order);
-        
+
         long expResult = new Date().getTime();
         long result = order.getTimeReceived().getTime();
         assertTrue(Math.abs(result - expResult) < 1000);
     }
+
+    @Test
+    public void testWhenNewOrderAndNoCustomerExistsThenThrowException() throws CustomerException {
+        boolean goodOrder = false;
+        //OrderQueue orderQueue = new OrderQueue();
+        Order order = new Order("", "");
+        if(order.getCustomerId().isEmpty() || order.getCustomerName().isEmpty()){
+            goodOrder = true;
+        }
+        assertTrue(goodOrder);
+    }
     
     @Test
-    public void testWhenNextOrderAndOrdersExistThenGetOrderWithNoTimeProcessed() {
+    public void testWhenNewOrderArrivesAndNoPurchaseExistsThenThrowException() throws PurchaseException, CustomerException {
+        boolean goodPurchase = true;
+        Order order = new Order("CUST00001", "ABC Construction");
+        order.addPurchase(new Purchase());
+        if(order.getListOfPurchases() == null){
+            goodPurchase = false;
+        }
+        assertTrue(goodPurchase);
+    }
+
+    @Test
+    public void testWhenNextOrderAndOrdersExistThenGetOrderWithNoTimeProcessed() throws CustomerException {
         OrderQueue orderQueue = new OrderQueue();
         Order order1 = new Order("CUST00001", "ABC Construction");
         order1.addPurchase(new Purchase("PROD0001", 450));
@@ -74,8 +95,19 @@ public class OrderQueueTest {
         orderQueue.add(order1);
         orderQueue.add(order2);
         order1.setTimeProcessed(new Date());
-        
-        assertEquals(order2, this);
+
+        assertEquals(order2.getListOfPurchases(), this);
     }
-    
+
+    @Test
+    public void testWhenNextOrderRequestAndOrdersExistThenReturnNull() throws CustomerException {
+        OrderQueue orderQueue = new OrderQueue();
+        Order order1 = new Order("CUST00001", "ABC Construction");
+        order1.addPurchase(new Purchase("PROD0001", 450));
+        order1.addPurchase(new Purchase("PROD0007", 250));
+        orderQueue.add(order1);
+        Object result = orderQueue.nextOrder();
+        Object expected = null;
+        assertEquals(expected, result);
+    }
 }

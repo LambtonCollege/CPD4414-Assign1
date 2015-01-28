@@ -33,10 +33,12 @@ public class Order {
     private List<Purchase> listOfPurchases = new ArrayList<>();
     private String notes;
     
-    public Order(String customerId, String customerName) {
+    public Order(String customerId, String customerName)  {
         this.customerId = customerId;
         this.customerName = customerName;
+        
     }
+    
     
     public void addPurchase(Purchase p) {
         listOfPurchases.add(p);

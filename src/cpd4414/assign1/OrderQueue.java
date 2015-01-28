@@ -26,9 +26,20 @@ import java.util.Queue;
  */
 public class OrderQueue {
     Queue<Order> orderQueue = new ArrayDeque<>();
-    
-    public void add(Order order) {
-        orderQueue.add(order);
+    Order order1 = new Order("", "");
+    public void add(Order order) throws CustomerException  {
+            orderQueue.add(order1);
+            if (order.getCustomerId().isEmpty() || order.getCustomerName().isEmpty()) {
+                throw new CustomerException();
+        }
         order.setTimeReceived(new Date());
+    }
+    
+    public Order nextOrder(){
+        if(orderQueue.peek() == null){
+            return null;
+        }else{
+            return orderQueue.peek();
+        }
     }
 }
